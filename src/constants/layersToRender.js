@@ -8,7 +8,7 @@ import SampleComp from "../js/components/SampleComp";
 let layersToRender = [
   {
     fore: false,
-    base: true,
+    base: <SampleComp id={1}/>,
     back: false,
     deep: false,
   },
@@ -19,7 +19,7 @@ let layersToRender = [
     deep: false,
   },
   {
-    fore: true,
+    fore: <SampleComp id={3}/>,
     base: true,
     back: false,
     deep: false,

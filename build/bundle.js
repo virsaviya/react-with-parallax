@@ -20159,25 +20159,17 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(/*! react-dom */ 158);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
 	var _Navbar = __webpack_require__(/*! ./navbar/Navbar */ 160);
 	
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 	
-	var _Groups = __webpack_require__(/*! ./layers/Groups */ 162);
+	var _Sections = __webpack_require__(/*! ./layers/Sections */ 162);
 	
-	var _Groups2 = _interopRequireDefault(_Groups);
+	var _Sections2 = _interopRequireDefault(_Sections);
 	
-	var _layerGroups = __webpack_require__(/*! ../../constants/layerGroups */ 164);
+	var _layersToRender = __webpack_require__(/*! ../../constants/layersToRender */ 165);
 	
-	var _layerGroups2 = _interopRequireDefault(_layerGroups);
-	
-	var _navbarLinks = __webpack_require__(/*! ../../constants/navbarLinks */ 165);
-	
-	var _navbarLinks2 = _interopRequireDefault(_navbarLinks);
+	var _layersToRender2 = _interopRequireDefault(_layersToRender);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20186,6 +20178,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import SampleComp from "./SampleComp";
 	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -20199,11 +20192,12 @@
 	  _createClass(Main, [{
 	    key: "render",
 	    value: function render() {
+	      // console.log(layersToRender);
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "app" },
-	        _react2.default.createElement(_Navbar2.default, { links: _navbarLinks2.default }),
-	        _react2.default.createElement(_Groups2.default, { groups: _layerGroups2.default })
+	        { className: "app " },
+	        _react2.default.createElement(_Navbar2.default, { sections: _layersToRender2.default }),
+	        _react2.default.createElement(_Sections2.default, { sections: _layersToRender2.default })
 	      );
 	    }
 	  }]);
@@ -20254,13 +20248,9 @@
 	  }
 	
 	  _createClass(Navbar, [{
-	    key: "onClick",
-	    value: function onClick(e) {
-	      console.log('magic btn clicked', e);
-	    }
-	  }, {
 	    key: "render",
 	    value: function render() {
+	      // <button className={magicBtn} onClick={this.onClick.bind(this)}>Click for Magic</button>
 	      return _react2.default.createElement(
 	        "section",
 	        { id: "navbarSection" },
@@ -20284,17 +20274,12 @@
 	                _react2.default.createElement("span", { className: "icon-bar" }),
 	                _react2.default.createElement("span", { className: "icon-bar" }),
 	                _react2.default.createElement("span", { className: "icon-bar" })
-	              ),
-	              _react2.default.createElement(
-	                "button",
-	                { className: "btn btn-info debug", onClick: this.onClick.bind(this) },
-	                "Click for Magic"
 	              )
 	            ),
 	            _react2.default.createElement(
 	              "div",
 	              { className: "collapse navbar-collapse", id: "navigation" },
-	              _react2.default.createElement(_NavbarLinks2.default, { links: this.props.links })
+	              _react2.default.createElement(_NavbarLinks2.default, { links: this.props.sections })
 	            )
 	          )
 	        )
@@ -20346,14 +20331,17 @@
 	  _createClass(NavbarLinks, [{
 	    key: "render",
 	    value: function render() {
-	      var links = this.props.links.map(function (link) {
+	      var links = this.props.links.map(function (_, idx) {
+	        var id = idx + 1;
+	        var name = "Section " + id;
+	        var url = "#section" + id;
 	        return _react2.default.createElement(
 	          "li",
-	          { key: link.id },
+	          { key: id },
 	          _react2.default.createElement(
 	            "a",
-	            { href: link.link },
-	            link.name
+	            { href: url },
+	            name
 	          )
 	        );
 	      });
@@ -20376,9 +20364,9 @@
 
 /***/ },
 /* 162 */
-/*!********************************************!*\
-  !*** ./src/js/components/layers/Groups.js ***!
-  \********************************************/
+/*!**********************************************!*\
+  !*** ./src/js/components/layers/Sections.js ***!
+  \**********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20405,44 +20393,122 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Groups = function (_React$Component) {
-	  _inherits(Groups, _React$Component);
+	var Sections = function (_React$Component) {
+	  _inherits(Sections, _React$Component);
 	
-	  function Groups(props) {
-	    _classCallCheck(this, Groups);
+	  function Sections(props) {
+	    _classCallCheck(this, Sections);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Groups).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Sections).call(this, props));
 	  }
 	
-	  _createClass(Groups, [{
+	  _createClass(Sections, [{
 	    key: "render",
 	    value: function render() {
-	      var groups = this.props.groups.map(function (group, idx) {
-	        var groupId = "group" + group.id;
+	      var sections = this.props.sections.map(function (section, idx) {
+	        var sectionId = "section" + (idx + 1);
 	        return _react2.default.createElement(
 	          "div",
-	          { key: group.id, id: groupId, className: "parallaxGroup" },
-	          _react2.default.createElement(_Layers2.default, { group: group })
+	          { key: idx + 1, id: sectionId, className: "parallaxSection" },
+	          _react2.default.createElement(_Layers2.default, { section: section, sectionId: idx + 1 })
 	        );
 	      });
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "parallax" },
-	        groups
+	        sections
 	      );
 	    }
 	  }]);
 	
-	  return Groups;
+	  return Sections;
 	}(_react2.default.Component);
 	
-	exports.default = Groups;
+	exports.default = Sections;
 
 /***/ },
 /* 163 */
 /*!********************************************!*\
   !*** ./src/js/components/layers/Layers.js ***!
   \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SampleComp = __webpack_require__(/*! ../SampleComp */ 164);
+	
+	var _SampleComp2 = _interopRequireDefault(_SampleComp);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Layers = function (_React$Component) {
+	  _inherits(Layers, _React$Component);
+	
+	  function Layers(props) {
+	    _classCallCheck(this, Layers);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Layers).call(this, props));
+	  }
+	
+	  _createClass(Layers, [{
+	    key: "render",
+	    value: function render() {
+	      var section = this.props.section;
+	      var sectionId = this.props.sectionId;
+	
+	      // const content = this.props.content;
+	      var keys = Object.keys(section);
+	      var layers = keys.map(function (layer, idx) {
+	        var classes = "parallaxLayer parallaxLayer-" + layer;
+	        var text = "Group " + sectionId + ": " + layer + " layer.";
+	        if (section[layer]) {
+	          // console.log(section[layer]);
+	          return _react2.default.createElement(
+	            "div",
+	            { key: idx, className: classes },
+	            _react2.default.createElement(
+	              "p",
+	              { className: "title" },
+	              text
+	            ),
+	            section[layer]
+	          );
+	        }
+	      });
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        layers
+	      );
+	    }
+	  }]);
+	
+	  return Layers;
+	}(_react2.default.Component);
+	
+	exports.default = Layers;
+
+/***/ },
+/* 164 */
+/*!*****************************************!*\
+  !*** ./src/js/components/SampleComp.js ***!
+  \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20465,139 +20531,104 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Layers = function (_React$Component) {
-	  _inherits(Layers, _React$Component);
+	var SampleComp = function (_React$Component) {
+	  _inherits(SampleComp, _React$Component);
 	
-	  function Layers(props) {
-	    _classCallCheck(this, Layers);
+	  function SampleComp() {
+	    _classCallCheck(this, SampleComp);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Layers).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SampleComp).apply(this, arguments));
 	  }
 	
-	  _createClass(Layers, [{
+	  _createClass(SampleComp, [{
 	    key: "render",
 	    value: function render() {
-	      var group = this.props.group;
-	      var keys = Object.keys(group.layers);
-	      var layers = keys.map(function (layer, idx) {
-	        var classes = "parallaxLayer parallaxLayer-" + layer;
-	        var text = "Group " + group.id + ": " + layer + " layer.";
-	        if (group.layers[layer]) {
-	          {/*replace p element with the components to be rendered*/}
-	          return _react2.default.createElement(
-	            "div",
-	            { key: idx, className: classes },
-	            _react2.default.createElement(
-	              "p",
-	              { className: "title" },
-	              text
-	            ),
-	            "}"
-	          );
-	        }
-	      });
+	      var text = "This is Sample Component " + this.props.id;
 	      return _react2.default.createElement(
 	        "div",
-	        null,
-	        layers
+	        { className: "sample" },
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          text
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Passed through layersToRender.js"
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return Layers;
+	  return SampleComp;
 	}(_react2.default.Component);
 	
-	exports.default = Layers;
-
-/***/ },
-/* 164 */
-/*!**************************************!*\
-  !*** ./src/constants/layerGroups.js ***!
-  \**************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// toggle true/false to render layers
-	// add/delete groups as needed
-	var layerGroups = [{
-	  id: 1,
-	  layers: {
-	    fore: false,
-	    base: true,
-	    back: false,
-	    deep: false
-	  }
-	}, {
-	  id: 2,
-	  layers: {
-	    fore: false,
-	    base: true,
-	    back: true,
-	    deep: false
-	  }
-	}, {
-	  id: 3,
-	  layers: {
-	    fore: true,
-	    base: true,
-	    back: false,
-	    deep: false
-	  }
-	}, {
-	  id: 4,
-	  layers: {
-	    fore: false,
-	    base: true,
-	    back: true,
-	    deep: true
-	  }
-	}, {
-	  id: 5,
-	  layers: {
-	    fore: true,
-	    base: true,
-	    back: false,
-	    deep: false
-	  }
-	}, {
-	  id: 6,
-	  layers: {
-	    fore: false,
-	    base: true,
-	    back: true,
-	    deep: false
-	  }
-	}, {
-	  id: 7,
-	  layers: {
-	    fore: false,
-	    base: true,
-	    back: false,
-	    deep: false
-	  }
-	}];
-	exports.default = layerGroups;
+	exports.default = SampleComp;
 
 /***/ },
 /* 165 */
-/*!**************************************!*\
-  !*** ./src/constants/navbarLinks.js ***!
-  \**************************************/
-/***/ function(module, exports) {
+/*!*****************************************!*\
+  !*** ./src/constants/layersToRender.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// add/delete navbar links as needed
-	var navbarLinks = [{ id: 1, name: "Top", link: "#group1" }, { id: 2, name: "Section 2", link: "#group2" }, { id: 3, name: "Section 3", link: "#group3" }, { id: 4, name: "Section 4", link: "#group4" }, { id: 5, name: "Section 5", link: "#group5" }, { id: 6, name: "Section 6", link: "#group6" }, { id: 7, name: "Section 7", link: "#group7" }];
 	
-	exports.default = navbarLinks;
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SampleComp = __webpack_require__(/*! ../js/components/SampleComp */ 164);
+	
+	var _SampleComp2 = _interopRequireDefault(_SampleComp);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// toggle true/false to render layers
+	// add/delete groups as needed
+	
+	var layersToRender = [{
+	  fore: false,
+	  base: _react2.default.createElement(_SampleComp2.default, { id: 1 }),
+	  back: false,
+	  deep: false
+	}, {
+	  fore: false,
+	  base: true,
+	  back: true,
+	  deep: false
+	}, {
+	  fore: _react2.default.createElement(_SampleComp2.default, { id: 3 }),
+	  base: true,
+	  back: false,
+	  deep: false
+	}, {
+	  fore: false,
+	  base: true,
+	  back: true,
+	  deep: true
+	}, {
+	  fore: true,
+	  base: true,
+	  back: false,
+	  deep: false
+	}, {
+	  fore: false,
+	  base: true,
+	  back: true,
+	  deep: false
+	}, {
+	  fore: false,
+	  base: true,
+	  back: false,
+	  deep: false
+	}];
+	exports.default = layersToRender;
 
 /***/ }
 /******/ ]);

@@ -7,7 +7,9 @@
     "setup": "npm i",
     "test": "babel-node --presets es2015,stage-0,react server.js",
     "start": "babel-node --presets es2015,stage-0,react server.js"
-  },
+  },  
+  "author": "Virsaviya Efraim <Virsaviya.Efraim@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "react",
     "parallax",
@@ -15,8 +17,6 @@
     "smooth",
     "scrolling"
   ],
-  "author": "Virsaviya Efraim <Virsaviya.Efraim@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.2",
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "jade": "^1.11.0",
     "morgan": "^1.6.1",
     "path": "^0.12.7",
     "react": "^0.14.7",

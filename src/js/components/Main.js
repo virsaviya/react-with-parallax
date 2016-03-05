@@ -1,19 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Navbar from "./navbar/Navbar";
-import Groups from "./layers/Groups";
+import Sections from "./layers/Sections";
+// import SampleComp from "./SampleComp";
 
-import layerGroups from '../../constants/layerGroups';
-import navbarLinks from '../../constants/navbarLinks';
+import layersToRender from '../../constants/layersToRender';
 
 
-class Main extends React.Component{
-  render(){
+class Main extends React.Component {
+  render() {
+    // console.log(layersToRender);
     return(
-      <div className="app">
-        <Navbar links={navbarLinks}/>
-        <Groups groups={layerGroups}/>
+      <div className="app ">
+        <Navbar sections={layersToRender} />
+        <Sections sections={layersToRender} />
       </div>
     )
   }

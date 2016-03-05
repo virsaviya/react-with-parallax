@@ -9,7 +9,7 @@
   overflow-y: auto;
   perspective: 300px;
 }
-.parallaxGroup {
+.parallaxSection {
   position: relative;
   height: 500px; /*fallback for older browsers*/
   height: 100vh;
@@ -49,14 +49,14 @@
   z-index: 999;
   margin: 10px ;
 }
-.debugOn .parallaxGroup {
+.debugOn .parallaxSection {
   transform: translate3d(700px, 0,  -800px) rotateY(30deg);
 }
 .debugOn .parallaxLayer {
   box-shadow: 0 0 0 2px #000;
   opacity: 0.9;
 }
-.parallaxGroup {
+.parallaxSection {
   transition: transform 0.5s;
 }
 
@@ -95,56 +95,56 @@ body {
   transform: translate(-50%, -50%);
 }
 
-  /*          GROUP STYLES           */
+  /*         SECTION STYLES          */
  /* Play around with these to get a */
 /*  feel for what slides on what.  */ 
 
-#group1 {
-  z-index: 5; /* slides over group 2 */
+#section1 {
+  z-index: 5; /* slides over section 2 */
 }
-#group1 .parallaxLayer-base {
+#section1 .parallaxLayer-base {
   background: powderblue;
 }
 
-#group2 {
-  z-index: 3; /* slides under groups 1 & 3 */
+#section2 {
+  z-index: 3; /* slides under sections 1 & 3 */
 }
-#group2 .parallaxLayer-back {
+#section2 .parallaxLayer-back {
   background: turquoise;
 }
 
-#group3 {
-  z-index: 5; /* slides over group 2 & 4 */
+#section3 {
+  z-index: 5; /* slides over sections 2 & 4 */
 }
-#group3 .parallaxLayer-base {
+#section3 .parallaxLayer-base {
   background: lightsteelblue;
 }
 
-#group4 {
-  z-index: 3; /* slides over group 4 & 6 */
+#section4 {
+  z-index: 3; /* slides over sections 4 & 6 */
 }
-#group4 .parallaxLayer-deep {
+#section4 .parallaxLayer-deep {
   background: steelblue;
 }
 
-#group5 {
-  z-index: 5; /* slides over group 4 & 6 */
+#section5 {
+  z-index: 5; /* slides over sections 4 & 6 */
 }
-#group5 .parallaxLayer-base {
+#section5 .parallaxLayer-base {
   background: peachpuff;
 }
 
-#group6 {
-  z-index: 2; /* slides under group 5 & 7 */
+#section6 {
+  z-index: 2; /* slides under sections 5 & 7 */
 }
-#group6 .parallaxLayer-back {
+#section6 .parallaxLayer-back {
   background: turquoise;
 }
 
-#group7 {
-  z-index: 5; /* slides over group 7 */
+#section7 {
+  z-index: 5; /* slides over section 7 */
 }
-#group7 .parallaxLayer-base {
+#section7 .parallaxLayer-base {
   background: greenyellow;
 }
 
@@ -158,7 +158,7 @@ body {
  /* RESPONSIVE BACKGROUND IMAGES */
 /* ---------------------------- */
 
-#group1 .parallaxLayer-base {
+#section1 .parallaxLayer-base {
   background-color: gray;  /* default in case of img not loading */
   background-image: url(../images/background-2-railey.png);  /* choose your image here */
   background-position: center center;
@@ -166,7 +166,7 @@ body {
   background-size: cover;
 }
 
-#group2 .parallaxLayer-back {
+#section2 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
   background-image: url(../images/background-6-leaves.png); /* choose your image here */
   background-position: center center;
@@ -174,15 +174,15 @@ body {
   background-size: cover;
 }
 
-#group4 .parallaxLayer-back {
+#section4 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
-  background-image: url(../images/packground-1-trees.png);  /* choose your image here */
+  background-image: url(../images/background-1-trees.png);  /* choose your image here */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#group6 .parallaxLayer-back {
+#section6 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
   background-image: url(../images/background-5-burano.png);  /* choose your image here */
   background-position: center center;
