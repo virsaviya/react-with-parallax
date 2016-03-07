@@ -29,7 +29,6 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "webpack": "^1.12.13",
-    "babel": "^6.5.2",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
