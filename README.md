@@ -1,9 +1,9 @@
 #React with Parallax
 
 *created by: Virsaviya Efraim*  
-*updated: March 4, 2016*
+*updated: March 7, 2016*
 
-This is a react template built to be responsive while enabling parallax and smooth scrolling.  
+This is a react template built to be responsive while enabling parallax scrolling.  
 
 Play around with the CSS to discover how the parallax scrolling works.
 
@@ -17,7 +17,7 @@ For setup:
 During Development:
 
     webpack -wd
-    npm run testing
+    npm start
 
 
 Features to be added:  
