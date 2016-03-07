@@ -2,21 +2,20 @@ import React from "react";
 
 import Navbar from "./navbar/Navbar";
 import Sections from "./layers/Sections";
-// import SampleComp from "./SampleComp";
 
-import layersToRender from '../../constants/layersToRender';
+import layers from '../../constants/layers';
 
 
 class Main extends React.Component {
   render() {
-    // console.log(layersToRender);
     return(
       <div className="app ">
-        <Navbar sections={layersToRender} />
-        <Sections sections={layersToRender} />
+        {/* The Navbar is generated based on the layers file*/}
+        <Navbar sections={layers} />
+        <Sections sections={layers} />
       </div>
     )
   }
 }
 
-export default Main
+export default Main;

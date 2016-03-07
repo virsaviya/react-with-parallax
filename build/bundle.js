@@ -55,15 +55,13 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 158);
 	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
 	var _Main = __webpack_require__(/*! ./components/Main */ 159);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_Main2.default, null), document.getElementById("react"));
+	(0, _reactDom.render)(_react2.default.createElement(_Main2.default, null), document.getElementById("react"));
 
 /***/ },
 /* 1 */
@@ -20167,9 +20165,9 @@
 	
 	var _Sections2 = _interopRequireDefault(_Sections);
 	
-	var _layersToRender = __webpack_require__(/*! ../../constants/layersToRender */ 165);
+	var _layers = __webpack_require__(/*! ../../constants/layers */ 165);
 	
-	var _layersToRender2 = _interopRequireDefault(_layersToRender);
+	var _layers2 = _interopRequireDefault(_layers);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20178,7 +20176,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import SampleComp from "./SampleComp";
 	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -20192,12 +20189,11 @@
 	  _createClass(Main, [{
 	    key: "render",
 	    value: function render() {
-	      // console.log(layersToRender);
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "app " },
-	        _react2.default.createElement(_Navbar2.default, { sections: _layersToRender2.default }),
-	        _react2.default.createElement(_Sections2.default, { sections: _layersToRender2.default })
+	        _react2.default.createElement(_Navbar2.default, { sections: _layers2.default }),
+	        _react2.default.createElement(_Sections2.default, { sections: _layers2.default })
 	      );
 	    }
 	  }]);
@@ -20250,7 +20246,6 @@
 	  _createClass(Navbar, [{
 	    key: "render",
 	    value: function render() {
-	      // <button className={magicBtn} onClick={this.onClick.bind(this)}>Click for Magic</button>
 	      return _react2.default.createElement(
 	        "section",
 	        { id: "navbarSection" },
@@ -20331,9 +20326,8 @@
 	  _createClass(NavbarLinks, [{
 	    key: "render",
 	    value: function render() {
-	      var links = this.props.links.map(function (_, idx) {
+	      var links = this.props.links.map(function (link, idx) {
 	        var id = idx + 1;
-	        var name = "Section " + id;
 	        var url = "#section" + id;
 	        return _react2.default.createElement(
 	          "li",
@@ -20341,7 +20335,7 @@
 	          _react2.default.createElement(
 	            "a",
 	            { href: url },
-	            name
+	            link.name
 	          )
 	        );
 	      });
@@ -20471,14 +20465,11 @@
 	    value: function render() {
 	      var section = this.props.section;
 	      var sectionId = this.props.sectionId;
-	
-	      // const content = this.props.content;
-	      var keys = Object.keys(section);
+	      var keys = Object.keys(section.layers);
 	      var layers = keys.map(function (layer, idx) {
 	        var classes = "parallaxLayer parallaxLayer-" + layer;
-	        var text = "Group " + sectionId + ": " + layer + " layer.";
-	        if (section[layer]) {
-	          // console.log(section[layer]);
+	        var text = "Section " + sectionId + ": " + section.name + " " + layer + " layer.";
+	        if (section.layers[layer]) {
 	          return _react2.default.createElement(
 	            "div",
 	            { key: idx, className: classes },
@@ -20487,7 +20478,7 @@
 	              { className: "title" },
 	              text
 	            ),
-	            section[layer]
+	            section.layers[layer]
 	          );
 	        }
 	      });
@@ -20543,19 +20534,13 @@
 	  _createClass(SampleComp, [{
 	    key: "render",
 	    value: function render() {
-	      var text = "This is Sample Component " + this.props.id;
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "sample" },
 	        _react2.default.createElement(
 	          "p",
 	          null,
-	          text
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "Passed through layersToRender.js"
+	          "This is SampleComp passed through layers.js"
 	        )
 	      );
 	    }
@@ -20568,9 +20553,9 @@
 
 /***/ },
 /* 165 */
-/*!*****************************************!*\
-  !*** ./src/constants/layersToRender.js ***!
-  \*****************************************/
+/*!*********************************!*\
+  !*** ./src/constants/layers.js ***!
+  \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20589,46 +20574,74 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// toggle true/false to render layers
-	// add/delete groups as needed
-	
-	var layersToRender = [{
-	  fore: false,
-	  base: _react2.default.createElement(_SampleComp2.default, { id: 1 }),
-	  back: false,
-	  deep: false
+	// To render a background image to a layer,
+	// pass true then select the image in style.css.
+	// To render content to a layer, pass in the desired component.
+	// Keep all other layers as false.
+	// Change "name" for navbar link text.
+	// Add/delete sections as needed.
+	var layers = [{
+	  name: "Thai Beach",
+	  layers: {
+	    fore: false,
+	    base: true,
+	    back: false,
+	    deep: false
+	  }
 	}, {
-	  fore: false,
-	  base: true,
-	  back: true,
-	  deep: false
+	  name: "CT Fall",
+	  layers: {
+	    fore: false,
+	    base: true,
+	    back: true,
+	    deep: false
+	  }
 	}, {
-	  fore: _react2.default.createElement(_SampleComp2.default, { id: 3 }),
-	  base: true,
-	  back: false,
-	  deep: false
+	  name: "Light Steel Blue",
+	  layers: {
+	    fore: _react2.default.createElement(_SampleComp2.default, null),
+	    base: true,
+	    back: false,
+	    deep: false
+	  }
 	}, {
-	  fore: false,
-	  base: true,
-	  back: true,
-	  deep: true
+	  name: "Misty Trees",
+	  layers: {
+	    fore: false,
+	    base: true,
+	    back: true,
+	    deep: true
+	  }
 	}, {
-	  fore: true,
-	  base: true,
-	  back: false,
-	  deep: false
+	  name: "Peach Puff",
+	  layers: {
+	    fore: true,
+	    base: true,
+	    back: false,
+	    deep: false
+	  }
 	}, {
-	  fore: false,
-	  base: true,
-	  back: true,
-	  deep: false
+	  name: "Venician Homes",
+	  layers: {
+	    fore: false,
+	    base: true,
+	    back: true,
+	    deep: false
+	  }
 	}, {
-	  fore: false,
-	  base: true,
-	  back: false,
-	  deep: false
+	  name: "Green Yellow",
+	  layers: {
+	    fore: false,
+	    base: true,
+	    back: false,
+	    deep: false
+	  }
 	}];
-	exports.default = layersToRender;
+	
+	// import each section component
+	// to be rendered on the layers.
+	
+	exports.default = layers;
 
 /***/ }
 /******/ ]);

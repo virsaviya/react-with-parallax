@@ -9,20 +9,15 @@ class Layers extends React.Component{
   render(){
     const section = this.props.section;
     const sectionId = this.props.sectionId;
-
-
-
-    // const content = this.props.content;
-    const keys = Object.keys(section);
+    const keys = Object.keys(section.layers);
     const layers = keys.map ( (layer, idx) => {
       const classes = `parallaxLayer parallaxLayer-${layer}`;
-      const text = `Group ${sectionId}: ${layer} layer.`;
-      if (section[layer]) {
-        // console.log(section[layer]);
+      const text = `Section ${sectionId}: ${section.name} ${layer} layer.`;
+      if (section.layers[layer]) {
         return (
           <div key={idx} className={classes}>
             <p className="title">{text}</p>
-            {section[layer]}
+            {section.layers[layer]}
           </div>
         )
       }

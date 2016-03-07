@@ -5,13 +5,12 @@ class NavbarLinks extends React.Component{
     super(props);
   }
   render(){
-    let links = this.props.links.map( (_, idx) => {
+    let links = this.props.links.map( (link, idx) => {
       const id = idx + 1
-      const name = `Section ${id}`;
       const url = `#section${id}`;
       return (
         <li key={id}>
-          <a href={url}>{name}</a>
+          <a href={url}>{link.name}</a>
         </li>
       )
     })

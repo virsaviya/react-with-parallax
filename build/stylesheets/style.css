@@ -41,9 +41,9 @@
 }
 
 
-  /* ------------------------------------------------ */
- /* DEBUG STATE (AKA MAGIC - KEITH, YOU'RE A WIZARD) */
-/* ------------------------------------------------ */
+  /* ----------------------- */
+ /* DEBUG STATE (AKA MAGIC) */
+/* ----------------------- */
 
 .debug {
   z-index: 999;
@@ -160,7 +160,7 @@ body {
 
 #section1 .parallaxLayer-base {
   background-color: gray;  /* default in case of img not loading */
-  background-image: url(../images/background-2-railey.png);  /* choose your image here */
+  background-image: url(../images/background-2-railey.png);  /* select your image here */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -168,7 +168,7 @@ body {
 
 #section2 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
-  background-image: url(../images/background-6-leaves.png); /* choose your image here */
+  background-image: url(../images/background-6-leaves.png); /* select your image here */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -176,7 +176,7 @@ body {
 
 #section4 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
-  background-image: url(../images/background-1-trees.png);  /* choose your image here */
+  background-image: url(../images/background-1-trees.png);  /* select your image here */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -184,7 +184,7 @@ body {
 
 #section6 .parallaxLayer-back {
   background-color: gray;  /* default in case of img not loading */
-  background-image: url(../images/background-5-burano.png);  /* choose your image here */
+  background-image: url(../images/background-5-burano.png);  /* select your image here */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

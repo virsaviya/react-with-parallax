@@ -7,7 +7,6 @@ class Navbar extends React.Component{
     super(props);
   }
   render(){
-              // <button className={magicBtn} onClick={this.onClick.bind(this)}>Click for Magic</button>
     return(
       <section id="navbarSection">
         <div className="navbar navbar-default navbar-fixed-top">
