@@ -6,9 +6,13 @@
   "scripts": {
     "setup": "npm i",
     "start": "babel-node --presets es2015,stage-0,react server.js"
-  },  
+  },
   "author": "Virsaviya Efraim <Virsaviya.Efraim@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Virsaviya/React-with-Parallax"
+  },
   "keywords": [
     "react",
     "parallax",
@@ -25,6 +29,7 @@
     "webpack": "^1.12.13"
   },
   "dependencies": {
+    "babel": "^6.5.2",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
