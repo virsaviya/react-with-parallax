@@ -4,7 +4,7 @@
 *updated: March 7, 2016*
 
 This is a React template built to be responsive while enabling parallax scrolling.  
-[Demo](https://mighty-lowlands-33364.herokuapp.com/#section4)
+[Demo](https://mighty-lowlands-33364.herokuapp.com/)
 
 Play around with the CSS to discover how the parallax scrolling works.
 
